@@ -22,14 +22,15 @@ function Register(props) {
     }
 
     const StyleButton=Styled.button `
-     display:block;
+     display:${(props)=>props.flag ? "inline-block" : "block"};
      padding:6px 0px;
-     background-color:blue; 
+     background-color:${(props)=>props.bgcolor}; 
      border:none;
      border-radius:6px;
      color:white;
-     width:100%;
+     width:${(props)=>props.flag==="1" ? "48%" : "100%"};
      margin-left:3px;
+     margin-bottom:10px;
      `;
     
     const StyleRegisterContainer=Styled.div `
@@ -78,8 +79,12 @@ function Register(props) {
             <button type='button' className={btnClass.join(" ")} onClick={props.click}>{btnText}</button>
 
             {/* *******************Styled Component************** */}
-            <StyleButton type='button'>Login</StyleButton>
-
+            <StyleButton type='button'  flag="1" bgcolor="orange">Login</StyleButton>
+            
+            {/* *******************Using the props with styled components************** */}
+            <StyleButton type='button' flag="1" bgcolor="green">Login with Google</StyleButton>
+            <StyleButton type='button' flag="0" bgcolor="blue">Login with Facebook</StyleButton>
+            
         </form>
     </StyleRegisterContainer>
   )
