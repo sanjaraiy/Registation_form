@@ -21,10 +21,40 @@ function Register(props) {
         btnClass.push("btn-success")
     }
 
+    const StyleButton=Styled.button `
+     display:block;
+     padding:6px 0px;
+     background-color:blue; 
+     border:none;
+     border-radius:6px;
+     color:white;
+     width:100%;
+     margin-left:3px;
+     `;
     
+    const StyleRegisterContainer=Styled.div `
+     width:400px;
+     &:hover {
+           box-shadow:0px 0px 5px grey;
+     }
+
+     @media (min-width:0px) and (max-width:600px){
+        width:300px;
+     }
+
+    `
+
+    //*****************create div using styled components***************************
+    //  const StyledDiv=Styled.div `
+    //  background-color:red;
+    //  width:400px;
+    //  height:300px;
+     
+    //  `
+
 
   return (
-    <div className='container card p-3 mt-2 register-container'>
+    <StyleRegisterContainer className='container card p-3 mt-2 '>
         <h1 className='text-center'>Registation Form</h1>
         <form onSubmit={props.submit}>
             <div className='form-group'>
@@ -46,8 +76,12 @@ function Register(props) {
            
             {/* *******************Using class change color************** */}
             <button type='button' className={btnClass.join(" ")} onClick={props.click}>{btnText}</button>
+
+            {/* *******************Styled Component************** */}
+            <StyleButton type='button'>Login</StyleButton>
+
         </form>
-    </div>
+    </StyleRegisterContainer>
   )
 }
 
